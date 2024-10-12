@@ -6,7 +6,6 @@ window.addEventListener('load', () => {
     canvas.height = window.innerHeight;
 
     const game = new Game(canvas, context);
-    context.fillStyle = 'white';
 
     // Animate(rerender) object
     function animate(){
@@ -28,7 +27,8 @@ class Game {
         this.width = this.canvas.width;
         this.height = this.canvas.height;
 
-        this.x = 100;
+        // Snake
+        this.snake = new Snake(this, 0, 0, 1, 1);
 
         window.addEventListener('resize', (event) => {
             this.resize(event.currentTarget.innerWidth, event.currentTarget.innerHeight);
@@ -46,8 +46,8 @@ class Game {
 
     // Draw objects on canvas
     render(){
-        this.context.fillRect(this.x, 10, 100, 50);
-        this.x++;
+        this.snake.draw();
+        this.snake.update();
     };
 };
 
