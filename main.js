@@ -24,9 +24,8 @@ class Game {
     constructor(canvas, context){
         this.canvas = canvas;
         this.context = context;
-        this.width = this.canvas.width;
-        this.height = this.canvas.height;
-
+        this.width;
+        this.height;
         // Snake
         this.snake = new Snake(this, 0, 0, 1, 1);
 
@@ -35,15 +34,16 @@ class Game {
         this.cellSize = 60;
 
         // Quantity of columns on the screen
-        this.colums = this.width / this.cellSize;
+        this.colums;
 
         // Quantity of rows on the screen
-        this.rows = this.height / this.cellSize;
+        this.rows;
 
 
         window.addEventListener('resize', (event) => {
             this.resize(event.currentTarget.innerWidth, event.currentTarget.innerHeight);
         });
+        this.resize(this.canvas.width, this.canvas.height);
     };
 
     // Render game grid
@@ -57,11 +57,14 @@ class Game {
 
     // Set canvas size
     resize(width, height){
-        this.canvas.width = Math.floor(width);
-        this.canvas.height = Math.floor(height);
+        this.canvas.width = width - width % this.cellSize;
+        this.canvas.height = height - height % this.cellSize; 
         this.width = this.canvas.width;
         this.height = this.canvas.height;
+        this.colums = this.width / this.cellSize;
+        this.rows = this.height / this.cellSize;
         this.render();
+        this.drawGrid();
     };
 
     // Draw objects on canvas
