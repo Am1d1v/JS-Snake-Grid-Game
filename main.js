@@ -7,11 +7,16 @@ window.addEventListener('load', () => {
 
     const game = new Game(canvas, context);
 
+    let lastTime = 0;
+
     // Animate(rerender) object
-    function animate(){
+    function animate(timestamp){
+        const deltaTime = timestamp - lastTime;
+        lastTime = timestamp;
         context.clearRect(0, 0, canvas.width, canvas.height);
-        game.render();
+        game.render(deltaTime);
         requestAnimationFrame(animate);
+        console.log(timestamp, deltaTime)
 
     };   
     requestAnimationFrame(animate);
@@ -26,9 +31,6 @@ class Game {
         this.context = context;
         this.width;
         this.height;
-        // Snake
-        this.snake = new Snake(this, 0, 0, 1, 1);
-
         
         // Size(Width & Height) of the grid
         this.cellSize = 60;
@@ -39,6 +41,10 @@ class Game {
         // Quantity of rows on the screen
         this.rows;
 
+
+
+        // Snake(Player's model)
+        this.snake = new Snake(this, 0, 0, 0, 1);
 
         window.addEventListener('resize', (event) => {
             this.resize(event.currentTarget.innerWidth, event.currentTarget.innerHeight);
@@ -63,12 +69,11 @@ class Game {
         this.height = this.canvas.height;
         this.colums = this.width / this.cellSize;
         this.rows = this.height / this.cellSize;
-        this.render();
         this.drawGrid();
     };
 
     // Draw objects on canvas
-    render(){
+    render(deltaTime){
         this.drawGrid();
         this.snake.draw();
         this.snake.update();
