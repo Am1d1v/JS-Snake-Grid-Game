@@ -13,10 +13,8 @@ window.addEventListener('load', () => {
     function animate(timestamp){
         const deltaTime = timestamp - lastTime;
         lastTime = timestamp;
-        context.clearRect(0, 0, canvas.width, canvas.height);
         game.render(deltaTime);
         requestAnimationFrame(animate);
-        console.log(timestamp, deltaTime)
 
     };   
     requestAnimationFrame(animate);
@@ -41,6 +39,15 @@ class Game {
         // Quantity of rows on the screen
         this.rows;
 
+        // Timing Animation
+        // Delta time accumulation
+        this.eventTimer = 0;
+
+        // How frequently in milliseconds animation updates
+        this.eventInterval = 200;
+        
+        // If true => update  animation
+        this.eventUpdate = false;
 
 
         // Snake(Player's model)
@@ -72,11 +79,30 @@ class Game {
         this.drawGrid();
     };
 
+    // Handle Animation Timing
+    handlePeriodicEvents(deltaTime){
+        if(this.eventTimer < this.eventInterval){
+            this.eventTimer += deltaTime;
+            this.eventUpdate = false;
+        } else {
+            this.eventTimer = 0;
+            this.eventUpdate = true;
+        };
+    }
+
+
     // Draw objects on canvas
     render(deltaTime){
-        this.drawGrid();
-        this.snake.draw();
-        this.snake.update();
+        this.handlePeriodicEvents(deltaTime);
+        
+
+        // Update player's movement animation every eventTimer value milliseconds
+        if(this.eventUpdate){
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.drawGrid();
+            this.snake.draw();
+            this.snake.update();
+        }
     };
 };
 
