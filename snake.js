@@ -31,6 +31,27 @@ class Snake {
         this.x += this.speedX;
         this.y += this.speedY;
     }
+
+    // Snake Movement Manipulation
+    turnUp(){
+        this.speedX = 0;
+        this.speedY = -1;
+    }
+
+    turnRight(){
+        this.speedX = 1;
+        this.speedY = 0
+    }
+
+    turnDown(){
+        this.speedX = 0;
+        this.speedY = 1;
+    }
+
+    turnLeft(){
+        this.speedX = -1;
+        this.speedY = 0;
+    }
 };
 
 
@@ -42,18 +63,15 @@ class Keyboard1 extends Snake {
         window.addEventListener('keydown', (e) => {
             console.log(e.key)
 
+            // Player's movement direction
             if(e.key === 'ArrowRight'){
-                this.speedX = 1;
-                this.speedY = 0;
+                this.turnRight();
             } else if (e.key === 'ArrowDown'){
-                this.speedX = 0;
-                this.speedY = 1;
+                this.turnDown();
             } else if (e.key === 'ArrowLeft'){
-                this.speedX = -1;
-                this.speedY = 0;
+                this.turnLeft();
             } else if (e.key === 'ArrowUp'){
-                this.speedX = 0;
-                this.speedY = -1;
+                this.turnUp();
             }
 
 
