@@ -72,13 +72,12 @@ class Snake {
 };
 
 
-// Snakes' Behavior
+// Snakes' Behavior. Direction Manipulation with arrow keys
 class Keyboard1 extends Snake {
     constructor(game, x, y, speedX, speedY, color){
         super(game, x, y, speedX, speedY, color);
 
         window.addEventListener('keydown', (e) => {
-            console.log(e.key)
 
             // Player's movement direction
             if(e.key === 'ArrowRight'){
@@ -88,6 +87,29 @@ class Keyboard1 extends Snake {
             } else if (e.key === 'ArrowLeft'){
                 this.turnLeft();
             } else if (e.key === 'ArrowUp'){
+                this.turnUp();
+            }
+
+        });
+    }
+}
+
+// Snakes' Behavior. Direction Manipulation with WASD
+class Keyboard2 extends Snake {
+    constructor(game, x, y, speedX, speedY, color){
+        super(game, x, y, speedX, speedY, color);
+
+        window.addEventListener('keydown', (e) => {
+            console.log(e.key)
+
+            // Player's movement direction
+            if(e.key === 'd' || e.key === 'D'){
+                this.turnRight();
+            } else if (e.key === 's' || e.key === 'S'){
+                this.turnDown();
+            } else if (e.key === 'a' || e.key === 'A'){
+                this.turnLeft();
+            } else if (e.key === 'w' || e.key === 'W'){
                 this.turnUp();
             }
 

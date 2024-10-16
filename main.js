@@ -51,7 +51,8 @@ class Game {
 
 
         // Snake(Player's model)
-        this.snake = new Keyboard1(this, 0, 0, 0, 0, 'magenta');
+        this.player1 = new Keyboard1(this, 0, 0, 0, 0, 'magenta');
+        this.player2 = new Keyboard2(this, 0, 0, 0, 0, 'black');
 
         window.addEventListener('resize', (event) => {
             this.resize(event.currentTarget.innerWidth, event.currentTarget.innerHeight);
@@ -100,8 +101,14 @@ class Game {
         if(this.eventUpdate){
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.drawGrid();
-            this.snake.draw();
-            this.snake.update();
+
+            // Render & update player1 state
+            this.player1.draw();
+            this.player1.update();
+
+            // Render & update player2 state
+            this.player2.draw();
+            this.player2.update();
         }
     };
 };
