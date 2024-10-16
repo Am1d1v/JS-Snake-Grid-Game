@@ -51,7 +51,7 @@ class Game {
 
 
         // Snake(Player's model)
-        this.snake = new Keyboard1(this, 0, 0, 0, 1, 'magenta');
+        this.snake = new Keyboard1(this, 0, 0, 0, 0, 'magenta');
 
         window.addEventListener('resize', (event) => {
             this.resize(event.currentTarget.innerWidth, event.currentTarget.innerHeight);

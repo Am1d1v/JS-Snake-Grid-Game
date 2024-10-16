@@ -40,7 +40,23 @@ class Keyboard1 extends Snake {
         super(game, x, y, speedX, speedY, color);
 
         window.addEventListener('keydown', (e) => {
-            console.log(e)
+            console.log(e.key)
+
+            if(e.key === 'ArrowRight'){
+                this.speedX = 1;
+                this.speedY = 0;
+            } else if (e.key === 'ArrowDown'){
+                this.speedX = 0;
+                this.speedY = 1;
+            } else if (e.key === 'ArrowLeft'){
+                this.speedX = -1;
+                this.speedY = 0;
+            } else if (e.key === 'ArrowUp'){
+                this.speedX = 0;
+                this.speedY = -1;
+            }
+
+
         });
     }
 }
