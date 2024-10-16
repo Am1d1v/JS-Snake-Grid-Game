@@ -18,6 +18,9 @@ class Snake {
 
         // Snake's color
         this.color = color;
+
+        // Is player moving
+        this.moving = false;
     }
 
     // Draw player
@@ -28,29 +31,43 @@ class Snake {
 
     // Update player's state
     update(){
-        this.x += this.speedX;
-        this.y += this.speedY;
+        if(this.moving){
+            this.x += this.speedX;
+            this.y += this.speedY;
+        }
+
+        // Boundaries
+        // X Axis Boundaries
+        if(this.x < 1 && this.speedX < 0 || this.x >= this.game.colums - 1 && this.speedX > 0) this.moving = false;
+            
+        // Y Axis Boundaries
+        if(this.y < 1 && this.speedY < 0 || this.y >= this.game.rows - 1 && this.speedY > 0) this.moving = false;
+        console.log(this.game.rows, this.y)
     }
 
     // Snake Movement Manipulation
     turnUp(){
         this.speedX = 0;
         this.speedY = -1;
+        this.moving = true;
     }
 
     turnRight(){
         this.speedX = 1;
-        this.speedY = 0
+        this.speedY = 0;
+        this.moving = true;
     }
 
     turnDown(){
         this.speedX = 0;
         this.speedY = 1;
+        this.moving = true;
     }
 
     turnLeft(){
         this.speedX = -1;
         this.speedY = 0;
+        this.moving = true;
     }
 };
 
