@@ -100,6 +100,11 @@ class Game {
 
     };
 
+    // Collision Detection
+    checkCollision(Object1, Object2){
+        return Object1.x === Object2.x && Object1.y === Object2.y;
+    }
+
     // Handle Animation Timing
     handlePeriodicEvents(deltaTime){
         if(this.eventTimer < this.eventInterval){
