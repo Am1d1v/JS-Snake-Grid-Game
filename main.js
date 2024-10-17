@@ -49,10 +49,13 @@ class Game {
         // If true => update  animation
         this.eventUpdate = false;
 
-
         // Snake(Player's model)
-        this.player1 = new Keyboard1(this, 0, 0, 0, 0, 'magenta');
-        this.player2 = new Keyboard2(this, 0, 0, 0, 0, 'black');
+        this.player1;
+        this.player2;
+        
+        // Quantity of players
+        this.gamePlayers;
+
 
         window.addEventListener('resize', (event) => {
             this.resize(event.currentTarget.innerWidth, event.currentTarget.innerHeight);
@@ -78,6 +81,12 @@ class Game {
         this.colums = this.width / this.cellSize;
         this.rows = this.height / this.cellSize;
         this.drawGrid();
+
+        // Snake(Player's model)
+        this.player1 = new Keyboard1(this, 0, 0, 0, 0, 'magenta');
+        this.player2 = new Keyboard2(this, this.colums - 1, 0, 0, 0, 'black');
+        // Quantity of players
+        this.gamePlayers = [this.player1, this.player2];
     };
 
     // Handle Animation Timing
@@ -102,13 +111,12 @@ class Game {
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.drawGrid();
 
-            // Render & update player1 state
-            this.player1.draw();
-            this.player1.update();
+            //Render & update player's state
+            this.gamePlayers.forEach(player => {
+                player.draw();
+                player.update();
+            })
 
-            // Render & update player2 state
-            this.player2.draw();
-            this.player2.update();
         }
     };
 };

@@ -42,7 +42,6 @@ class Snake {
             
         // Y Axis Boundaries
         if(this.y < 1 && this.speedY < 0 || this.y >= this.game.rows - 1 && this.speedY > 0) this.moving = false;
-        console.log(this.game.rows, this.y)
     }
 
     // Snake Movement Manipulation
@@ -100,7 +99,6 @@ class Keyboard2 extends Snake {
         super(game, x, y, speedX, speedY, color);
 
         window.addEventListener('keydown', (e) => {
-            console.log(e.key)
 
             // Player's movement direction
             if(e.key === 'd' || e.key === 'D'){
@@ -117,3 +115,36 @@ class Keyboard2 extends Snake {
         });
     }
 }
+
+// Snake controlled by Computer
+class ComputerAI extends Snake{
+    constructor(game, x, y, speedX, speedY, color){
+        super(game, x, y, speedX, speedY, color);
+
+        // Timer to turn in random direction
+        this.turnTimer = 0;
+
+        // Number of steps to turn in random direction
+        this.turnInterval = 5;
+    };
+
+    // Update snake's status
+    update(){
+        super.update();
+        if(this.turnTimer < this.turnInterval){
+            this.turnTimer += 1;
+        } else {
+            this.turnTimer = 0;
+            this.turn();
+        };
+
+    }
+
+    // Turn in random direction
+    turn(){
+        if(this.speedY === 0){
+            Math.random() < 0.5 ? this.turnUp() : this.turnDown();
+        }
+    };  
+
+};
