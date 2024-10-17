@@ -58,7 +58,7 @@ class Game {
         this.food;
 
         // Quantity of players
-        this.gamePlayers;
+        this.gameObjects;
 
 
         window.addEventListener('resize', (event) => {
@@ -92,11 +92,12 @@ class Game {
         this.player3 = new ComputerAI(this, this.colums - 1, 0, 0, 0, 'White');
         this.player4 = new ComputerAI(this, this.colums - 1, this.rows - 1, 0, 0, 'navy');
 
-        // Quantity of players
-        this.gamePlayers = [this.player1, this.player2, this.player3, this.player4];
-
         // Food initialization
         this.food = new Food(this);
+
+        // Quantity of players
+        this.gameObjects = [this.player1, this.player2, this.player3, this.player4, this.food];
+
     };
 
     // Handle Animation Timing
@@ -122,9 +123,9 @@ class Game {
             this.drawGrid();
 
             //Render & update player's state
-            this.gamePlayers.forEach(player => {
-                player.draw();
-                player.update();
+            this.gameObjects.forEach(gameObj => {
+                gameObj.draw();
+                gameObj.update();
             })
 
         };
