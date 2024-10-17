@@ -52,6 +52,10 @@ class Game {
         // Snake(Player's model)
         this.player1;
         this.player2;
+        this.player3;
+        this.player4;
+
+        this.food;
 
         // Quantity of players
         this.gamePlayers;
@@ -90,6 +94,9 @@ class Game {
 
         // Quantity of players
         this.gamePlayers = [this.player1, this.player2, this.player3, this.player4];
+
+        // Food initialization
+        this.food = new Food(this);
     };
 
     // Handle Animation Timing
