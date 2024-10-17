@@ -38,10 +38,10 @@ class Snake {
 
         // Boundaries
         // X Axis Boundaries
-        if(this.x < 1 && this.speedX < 0 || this.x >= this.game.colums - 1 && this.speedX > 0) this.moving = false;
+        if(this.x < 0 && this.speedX < 0 || this.x >= this.game.colums - 1 && this.speedX > 0) this.moving = false;
             
         // Y Axis Boundaries
-        if(this.y < 1 && this.speedY < 0 || this.y >= this.game.rows - 1 && this.speedY > 0) this.moving = false;
+        if(this.y < 0 && this.speedY < 0 || this.y >= this.game.rows - 1 && this.speedY > 0) this.moving = false;
     }
 
     // Snake Movement Manipulation
@@ -125,7 +125,7 @@ class ComputerAI extends Snake{
         this.turnTimer = 0;
 
         // Number of steps to turn in random direction
-        this.turnInterval = 5;
+        this.turnInterval = Math.floor(Math.random() * this.game.colums + 1);
     };
 
     // Update snake's status
@@ -136,6 +136,7 @@ class ComputerAI extends Snake{
         } else {
             this.turnTimer = 0;
             this.turn();
+            this.turnInterval = Math.floor(Math.random() * this.game.colums + 1);
         };
 
     }
@@ -144,6 +145,8 @@ class ComputerAI extends Snake{
     turn(){
         if(this.speedY === 0){
             Math.random() < 0.5 ? this.turnUp() : this.turnDown();
+        } else if (this.speedX === 0){
+            Math.random() < 0.5 ? this.turnLeft() : this.turnRight();
         }
     };  
 

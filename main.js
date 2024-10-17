@@ -52,7 +52,7 @@ class Game {
         // Snake(Player's model)
         this.player1;
         this.player2;
-        
+
         // Quantity of players
         this.gamePlayers;
 
@@ -84,9 +84,12 @@ class Game {
 
         // Snake(Player's model)
         this.player1 = new Keyboard1(this, 0, 0, 0, 0, 'magenta');
-        this.player2 = new Keyboard2(this, this.colums - 1, 0, 0, 0, 'black');
+        this.player2 = new Keyboard2(this, 0, this.rows - 1, 0, 0, 'black');
+        this.player3 = new ComputerAI(this, this.colums - 1, 0, 0, 0, 'White');
+        this.player4 = new ComputerAI(this, this.colums - 1, this.rows - 1, 0, 0, 'navy');
+
         // Quantity of players
-        this.gamePlayers = [this.player1, this.player2];
+        this.gamePlayers = [this.player1, this.player2, this.player3, this.player4];
     };
 
     // Handle Animation Timing
@@ -117,7 +120,8 @@ class Game {
                 player.update();
             })
 
-        }
+        };
+
     };
 };
 
