@@ -20,7 +20,10 @@ class Snake {
         this.color = color;
 
         // Is player moving
-        this.moving = false;
+        this.moving = true;
+
+        // Player's score
+        this.score = 0;
     }
 
     // Draw player
@@ -38,13 +41,21 @@ class Snake {
 
         // Boundaries
         // X Axis Boundaries
-        if(this.x < 1 && this.speedX < 0 || this.x >= this.game.colums - 1 && this.speedX > 0) this.moving = false;
+        if(this.x < 1 && this.speedX < 0 || this.x >= this.game.colums - 1 && this.speedX > 0) {
+            this.moving = false;
+            this.x = 0;
+        };
             
         // Y Axis Boundaries
-        if(this.y < 1 && this.speedY < 0 || this.y >= this.game.rows - 1 && this.speedY > 0) this.moving = false;
+        if(this.y < 1 && this.speedY < 0 || this.y >= this.game.rows - 1 && this.speedY > 0){
+            this.moving = false;
+            this.y = 0;
+        }
 
         // Check collision
-        if(this.game.checkCollision(this, this.game.food)) console.log('Food')
+        if(this.game.checkCollision(this, this.game.food)){
+            this.score++;
+        }
     }
 
     // Snake Movement Manipulation
