@@ -55,6 +55,7 @@ class Snake {
         // Check collision
         if(this.game.checkCollision(this, this.game.food)){
             this.score++;
+            this.game.food.reset();
         }
     }
 
