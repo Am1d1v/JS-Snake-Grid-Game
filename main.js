@@ -1,3 +1,6 @@
+import Food from "./food.mjs";
+import {ComputerAI, Keyboard1, Keyboard2 } from "./snake.mjs";
+
 window.addEventListener('load', () => {
 
     const canvas = document.querySelector('#canvas1');
@@ -80,11 +83,15 @@ class Game {
     resize(width, height){
         this.canvas.width = width - width % this.cellSize;
         this.canvas.height = height - height % this.cellSize; 
+        this.context.fillStyle = 'white'
+        this.context.font = '30px Impact';
+        this.context.textBaseline = 'top';
         this.width = this.canvas.width;
         this.height = this.canvas.height;
         this.colums = this.width / this.cellSize;
         this.rows = this.height / this.cellSize;
         this.drawGrid();
+        
 
         // Snake(Player's model)
         this.player1 = new Keyboard1(this, 0, 0, 0, 0, 'magenta');
@@ -99,6 +106,14 @@ class Game {
         this.gameObjects = [this.player1, this.player2, this.player3, this.player4, this.food];
 
     };
+
+    // Display game status text
+    drawStatusText(){
+        this.context.fillText('P1: ' + this.player1.score, this.cellSize, this.cellSize);
+        this.context.fillText('P2: ' + this.player2.score, this.cellSize, this.cellSize * 2);
+        this.context.fillText('P3: ' + this.player3.score, this.cellSize, this.cellSize * 3);
+        this.context.fillText('P4: ' + this.player4.score, this.cellSize, this.cellSize * 4);
+    }
 
     // Collision Detection
     checkCollision(Object1, Object2){
@@ -131,8 +146,9 @@ class Game {
             this.gameObjects.forEach(gameObj => {
                 gameObj.draw();
                 gameObj.update();
-            })
+            });
 
+            this.drawStatusText();
         };
 
     };

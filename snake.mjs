@@ -86,7 +86,7 @@ class Snake {
 
 
 // Snakes' Behavior. Direction Manipulation with arrow keys
-class Keyboard1 extends Snake {
+export class Keyboard1 extends Snake {
     constructor(game, x, y, speedX, speedY, color){
         super(game, x, y, speedX, speedY, color);
 
@@ -108,7 +108,7 @@ class Keyboard1 extends Snake {
 }
 
 // Snakes' Behavior. Direction Manipulation with WASD
-class Keyboard2 extends Snake {
+export class Keyboard2 extends Snake {
     constructor(game, x, y, speedX, speedY, color){
         super(game, x, y, speedX, speedY, color);
 
@@ -131,7 +131,7 @@ class Keyboard2 extends Snake {
 }
 
 // Snake controlled by Computer
-class ComputerAI extends Snake{
+export class ComputerAI extends Snake{
     constructor(game, x, y, speedX, speedY, color){
         super(game, x, y, speedX, speedY, color);
 
