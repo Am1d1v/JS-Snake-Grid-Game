@@ -35,7 +35,7 @@ class Snake {
     // Draw player
     draw(){
         this.segments.forEach((segment, i) => {
-            if(i === 0) this.game.context.fillStyle = 'gold'
+            if(i === 0) this.game.context.fillStyle = 'purple'
             else {this.game.context.fillStyle = this.color;}
                 
             this.game.context.fillRect(segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height);
@@ -83,27 +83,36 @@ class Snake {
 
     // Snake Movement Manipulation
     turnUp(){
-        this.speedX = 0;
-        this.speedY = -1;
-        this.moving = true;
+        if(this.speedY == 0){
+            this.speedX = 0;
+            this.speedY = -1;
+            this.moving = true;
+        }
+        
     }
 
     turnRight(){
-        this.speedX = 1;
-        this.speedY = 0;
-        this.moving = true;
+        if(this.speedX === 0){
+            this.speedX = 1;
+            this.speedY = 0;
+            this.moving = true;
+        }
     }
 
     turnDown(){
-        this.speedX = 0;
-        this.speedY = 1;
-        this.moving = true;
+        if(this.speedY === 0){
+            this.speedX = 0;
+            this.speedY = 1;
+            this.moving = true;
+        }
     }
 
     turnLeft(){
-        this.speedX = -1;
-        this.speedY = 0;
-        this.moving = true;
+        if(this.speedX === 0){
+            this.speedX = -1;
+            this.speedY = 0;
+            this.moving = true;
+        }
     }
 };
 
