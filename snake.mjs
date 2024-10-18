@@ -24,12 +24,25 @@ class Snake {
 
         // Player's score
         this.score = 0;
+
+        // Player's length
+        this.length = 2;
+
+        // Player's body segments
+        this.segments = [];
     }
 
     // Draw player
     draw(){
-        this.game.context.fillStyle = this.color;
-        this.game.context.fillRect(this.x * this.game.cellSize, this.y * this.game.cellSize, this.width, this.height);
+        this.segments.forEach((segment, i) => {
+            if(i === 0) this.game.context.fillStyle = 'gold'
+            else {this.game.context.fillStyle = this.color;}
+                
+            this.game.context.fillRect(segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height);
+            
+            
+        });
+        
     }
 
     // Update player's state
@@ -37,6 +50,14 @@ class Snake {
         if(this.moving){
             this.x += this.speedX;
             this.y += this.speedY;
+            this.segments.unshift({
+                x: this.x,
+                y: this.y
+            });
+
+            if(this.segments.length > this.length){
+                this.segments.pop();
+            }
         }
 
         // Boundaries
@@ -56,6 +77,7 @@ class Snake {
         if(this.game.checkCollision(this, this.game.food)){
             this.score++;
             this.game.food.reset();
+            this.length++;
         }
     }
 
