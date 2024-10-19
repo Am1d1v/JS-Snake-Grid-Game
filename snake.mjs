@@ -1,7 +1,7 @@
 
 
 class Snake {
-    constructor(game, x, y, speedX, speedY, color){
+    constructor(game, x, y, speedX, speedY, color, name){
         this.game = game;
 
         // Initial position
@@ -30,6 +30,9 @@ class Snake {
 
         // Player's body segments
         this.segments = [];
+
+        // Player's nickname
+        this.name = name;
     }
 
     // Draw player
@@ -119,8 +122,8 @@ class Snake {
 
 // Snakes' Behavior. Direction Manipulation with arrow keys
 export class Keyboard1 extends Snake {
-    constructor(game, x, y, speedX, speedY, color){
-        super(game, x, y, speedX, speedY, color);
+    constructor(game, x, y, speedX, speedY, color, name){
+        super(game, x, y, speedX, speedY, color, name);
 
         window.addEventListener('keydown', (e) => {
 
@@ -141,8 +144,8 @@ export class Keyboard1 extends Snake {
 
 // Snakes' Behavior. Direction Manipulation with WASD
 export class Keyboard2 extends Snake {
-    constructor(game, x, y, speedX, speedY, color){
-        super(game, x, y, speedX, speedY, color);
+    constructor(game, x, y, speedX, speedY, color, name){
+        super(game, x, y, speedX, speedY, color, name);
 
         window.addEventListener('keydown', (e) => {
 
@@ -164,8 +167,8 @@ export class Keyboard2 extends Snake {
 
 // Snake controlled by Computer
 export class ComputerAI extends Snake{
-    constructor(game, x, y, speedX, speedY, color){
-        super(game, x, y, speedX, speedY, color);
+    constructor(game, x, y, speedX, speedY, color, name){
+        super(game, x, y, speedX, speedY, color, name);
 
         // Timer to turn in random direction
         this.turnTimer = 0;
