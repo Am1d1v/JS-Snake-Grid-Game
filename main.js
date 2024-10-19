@@ -1,5 +1,6 @@
 import Food from "./food.mjs";
 import {ComputerAI, Keyboard1, Keyboard2 } from "./snake.mjs";
+import UI from './UI.mjs';
 
 window.addEventListener('load', () => {
 
@@ -63,6 +64,7 @@ class Game {
         // Quantity of players
         this.gameObjects;
 
+        this.gameUI = new UI(this);
 
         window.addEventListener('resize', (event) => {
             this.resize(event.currentTarget.innerWidth, event.currentTarget.innerHeight);

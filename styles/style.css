@@ -22,16 +22,27 @@
   translate: -50% 0;
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
   border-radius: 10px;
 }
 #controls #buttons {
   width: 270px;
   display: flex;
   justify-content: space-between;
+  -moz-column-gap: 27px;
+       column-gap: 27px;
 }
 #controls #buttons button {
   width: 66px;
   background-color: #000;
   color: #fff;
   border-radius: 5px;
+}
+#controls #scoreScreen {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+#controls #scoreScreen > div {
+  border: 2px solid #fff;
 }/*# sourceMappingURL=style.css.map */
