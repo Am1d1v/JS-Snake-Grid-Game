@@ -43,6 +43,8 @@ class Game {
         // Quantity of rows on the screen
         this.rows;
 
+        this.topMargin = 2;
+
         // Timing Animation
         // Delta time accumulation
         this.eventTimer = 0;
