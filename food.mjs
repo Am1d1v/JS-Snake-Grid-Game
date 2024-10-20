@@ -11,7 +11,7 @@ class Food {
     // Spawn if collisioned with snake
     reset(){
         this.x = Math.floor(Math.random() * this.game.colums);
-        this.y = Math.floor(Math.random() * this.game.rows);
+        this.y = Math.floor(Math.random() * (this.game.rows - 2) + 2);
     };
 
     draw(){

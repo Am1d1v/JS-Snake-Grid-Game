@@ -24,6 +24,10 @@ window.addEventListener('load', () => {
     };   
     requestAnimationFrame(animate);
 
+    const debugBuggton = document.querySelector('#debugButton')
+    const gameMenu = document.querySelector('#gameMenu');
+
+    debugBuggton.addEventListener('click', () => gameMenu.classList.toggle('hide'));
 
 });
 
@@ -101,9 +105,9 @@ class Game {
         
 
         // Snake(Player's model)
-        this.player1 = new Keyboard1(this, 0, 0, 0, 0, 'magenta', 'P1');
-        this.player2 = new Keyboard2(this, 0, this.rows - 1, 0, 0, 'black', 'Player2');
-        this.player3 = new ComputerAI(this, this.colums - 1, 0, 0, 0, 'White', 'Player 3');
+        this.player1 = new Keyboard1(this, 0, this.topMargin, 0, 0, 'magenta', 'P1');
+        this.player2 = new ComputerAI(this, 0, this.rows - 1, 0, 0, 'black', 'Player2');
+        this.player3 = new ComputerAI(this, this.colums - 1, this.topMargin, 0, 0, 'White', 'Player 3');
         this.player4 = new ComputerAI(this, this.colums - 1, this.rows - 1, 0, 0, 'navy', 'P4');
 
         // Food initialization

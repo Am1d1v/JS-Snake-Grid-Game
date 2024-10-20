@@ -71,7 +71,7 @@ class Snake {
         };
             
         // Y Axis Boundaries
-        if(this.y < 1 && this.speedY < 0 || this.y >= this.game.rows - 1 && this.speedY > 0){
+        if(this.y < this.game.topMargin + 1 && this.speedY < 0 || this.y >= this.game.rows - 1 && this.speedY > 0){
             this.moving = false;
             this.y = 0;
         }
