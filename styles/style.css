@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #303030;
+}
+
 #canvas1 {
   position: absolute;
   left: 50%;
@@ -53,4 +57,8 @@
 #playerChoice .playerLabel {
   font-size: 20px;
   margin-top: 10px;
+}
+
+.assets {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

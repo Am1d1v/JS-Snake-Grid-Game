@@ -1,6 +1,7 @@
 import Food from "./food.mjs";
 import {ComputerAI, Keyboard1, Keyboard2 } from "./snake.mjs";
 import UI from './UI.mjs';
+import Background from "./Background.mjs";
 
 window.addEventListener('load', () => {
 
@@ -63,6 +64,8 @@ class Game {
 
         this.food;
 
+        this.backGround;
+
         // Quantity of players
         this.gameObjects;
 
@@ -94,7 +97,7 @@ class Game {
         this.height = this.canvas.height;
         this.colums = this.width / this.cellSize;
         this.rows = this.height / this.cellSize;
-        this.drawGrid();
+        this.backGround = new Background(this);
         
 
         // Snake(Player's model)
@@ -109,6 +112,7 @@ class Game {
         // Quantity of players
         this.gameObjects = [this.player1, this.player2, this.player3, this.player4, this.food];
 
+        this.drawGrid();
     };
 
     // Display game status text
@@ -144,7 +148,9 @@ class Game {
         // Update player's movement animation every eventTimer value milliseconds
         if(this.eventUpdate){
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.backGround.draw();
             this.drawGrid();
+            
 
             //Render & update player's state
             this.gameObjects.forEach(gameObj => {
