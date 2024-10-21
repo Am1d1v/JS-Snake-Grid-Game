@@ -82,6 +82,11 @@ class Snake {
             this.game.food.reset();
             this.length++;
         }
+
+        // Win condition
+        if(this.score >= this.game.winningScore){
+            this.game.gameUI.triggerGameOver();
+        }
     }
 
     // Snake Movement Manipulation

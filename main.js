@@ -24,11 +24,6 @@ window.addEventListener('load', () => {
     };   
     requestAnimationFrame(animate);
 
-    const debugBuggton = document.querySelector('#debugButton')
-    const gameMenu = document.querySelector('#gameMenu');
-
-    debugBuggton.addEventListener('click', () => gameMenu.classList.toggle('hide'));
-
 });
 
 // State of the game & state of all game objects
@@ -60,6 +55,9 @@ class Game {
         // If true => update  animation
         this.eventUpdate = false;
 
+        // Is game over
+        this.gameOver = true;
+
         // Snake(Player's model)
         this.player1;
         this.player2;
@@ -73,7 +71,11 @@ class Game {
         // Quantity of players
         this.gameObjects;
 
+        // Game UI
         this.gameUI = new UI(this);
+
+        // Scores to win
+        this.winningScore = 2;
 
         window.addEventListener('resize', (event) => {
             this.resize(event.currentTarget.innerWidth, event.currentTarget.innerHeight);
@@ -103,6 +105,11 @@ class Game {
         this.rows = this.height / this.cellSize;
         this.backGround = new Background(this);
         
+    };
+
+    // Start & Restart the gtame
+    start(){
+        this.gameOver = false;
 
         // Snake(Player's model)
         this.player1 = new Keyboard1(this, 0, this.topMargin, 0, 0, 'magenta', 'P1');
@@ -117,7 +124,7 @@ class Game {
         this.gameObjects = [this.player1, this.player2, this.player3, this.player4, this.food];
 
         this.drawGrid();
-    };
+    }
 
     // Display game status text
     drawStatusText(){
@@ -150,7 +157,7 @@ class Game {
         
 
         // Update player's movement animation every eventTimer value milliseconds
-        if(this.eventUpdate){
+        if(this.eventUpdate && !this.gameOver){
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.backGround.draw();
             this.drawGrid();
@@ -161,11 +168,10 @@ class Game {
                 gameObj.draw();
                 gameObj.update();
             });
+            // Update player's score
+            this.gameUI.update();
 
         };
-
-        // Update player's score
-        this.gameUI.update();
 
     };
 };
