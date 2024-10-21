@@ -109,21 +109,31 @@ class Game {
 
     // Start & Restart the gtame
     start(){
-        this.gameOver = false;
+        if(!this.gameOver){
+            this.gameUI.triggerGameOver();
+        } else {
 
-        // Snake(Player's model)
-        this.player1 = new Keyboard1(this, 0, this.topMargin, 0, 0, 'magenta', 'P1');
-        this.player2 = new ComputerAI(this, 0, this.rows - 1, 0, 0, 'black', 'Player2');
-        this.player3 = new ComputerAI(this, this.colums - 1, this.topMargin, 0, 0, 'White', 'Player 3');
-        this.player4 = new ComputerAI(this, this.colums - 1, this.rows - 1, 0, 0, 'navy', 'P4');
+            this.gameOver = false;
 
-        // Food initialization
-        this.food = new Food(this);
+             // Snake(Player's model)
+            this.player1 = new Keyboard1(this, 0, this.topMargin, 0, 0, 'magenta', 'P1');
+            this.player2 = new ComputerAI(this, 0, this.rows - 1, 0, 0, 'black', 'Player2');
+            this.player3 = new ComputerAI(this, this.colums - 1, this.topMargin, 0, 0, 'White', 'Player 3');
+            this.player4 = new ComputerAI(this, this.colums - 1, this.rows - 1, 0, 0, 'navy', 'P4');
 
-        // Quantity of players
-        this.gameObjects = [this.player1, this.player2, this.player3, this.player4, this.food];
+            // Food initialization
+            this.food = new Food(this);
 
-        this.drawGrid();
+            // Quantity of players
+            this.gameObjects = [this.player1, this.player2, this.player3, this.player4, this.food];
+
+            // Hide gameMenu
+            this.gameUI.gameplayUI();
+
+            this.drawGrid();
+        }
+
+       
     }
 
     // Display game status text

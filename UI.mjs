@@ -9,17 +9,16 @@ class UI {
         this.scoreBoard3 = document.querySelector('#scoreBoard3');
         this.scoreBoard4 = document.querySelector('#scoreBoard4');
 
-        const debugBuggton = document.querySelector('#debugButton')
-        const gameMenu = document.querySelector('#gameMenu');
-        const startGame = document.querySelector('#startButton');
 
-        // Hide menu
-        debugBuggton.addEventListener('click', () => gameMenu.classList.toggle('hide'));
+        this.gameMenu = document.querySelector('#gameMenu');
+        this.startGame = document.querySelector('#startButton');
 
-        startGame.addEventListener('click', () => {
-            this.game.start();
-            startGame.innerText = this.game.gameOver ? 'Start' : 'Restart'
-        });
+
+        this.startGame.addEventListener('click', () => this.game.start());
+
+        // Game over screen
+        this.gameOverScreen = document.querySelector('#gameOverScreen');
+        
     }
 
     update(){
@@ -31,6 +30,21 @@ class UI {
 
     triggerGameOver(){
         this.game.gameOver = true;
+        this.gameOverUI();
+    }
+
+    // UI while game is running
+    gameplayUI(){
+        this.gameMenu.style.display = 'none';
+        this.startGame.innerText = 'Restart';
+        this.gameOverScreen.style.display = 'none';
+    }
+
+    // UI if gameOver
+    gameOverUI(){
+        this.gameMenu.style.display = 'block';
+        this.startGame.innerText = 'Start';
+        this.gameOverScreen.style.display = 'block';
     }
 }
 
