@@ -11,14 +11,18 @@ class UI {
 
 
         this.gameMenu = document.querySelector('#gameMenu');
+
         this.startGame = document.querySelector('#startButton');
-
-
         this.startGame.addEventListener('click', () => this.game.start());
 
         // Game over screen
         this.gameOverScreen = document.querySelector('#gameOverScreen');
-        
+
+        // Full screen 
+        this.fullScreen = document.querySelector('#fullscreenButton');
+        this.fullScreen.addEventListener('click', () => {
+            this.game.toggleFullscreen();
+        });
     }
 
     update(){

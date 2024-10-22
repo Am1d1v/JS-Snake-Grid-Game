@@ -67,13 +67,11 @@ class Snake {
         // X Axis Boundaries
         if(this.x < 1 && this.speedX < 0 || this.x >= this.game.colums - 1 && this.speedX > 0) {
             this.moving = false;
-            this.x = 0;
         };
             
         // Y Axis Boundaries
         if(this.y < this.game.topMargin + 1 && this.speedY < 0 || this.y >= this.game.rows - 1 && this.speedY > 0){
             this.moving = false;
-            this.y = 0;
         }
 
         // Check collision

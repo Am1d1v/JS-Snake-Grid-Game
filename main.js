@@ -149,6 +149,15 @@ class Game {
         return Object1.x === Object2.x && Object1.y === Object2.y;
     }
 
+    // Toggle fullscreen mode
+    toggleFullscreen(){
+        if(!document.fullscreenElement){
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
     // Handle Animation Timing
     handlePeriodicEvents(deltaTime){
         if(this.eventTimer < this.eventInterval){
