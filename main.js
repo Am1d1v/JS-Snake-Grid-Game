@@ -77,9 +77,20 @@ class Game {
         // Scores to win
         this.winningScore = 2;
 
+        // debug mode
+        this.isDebug = true;
+
         window.addEventListener('resize', (event) => {
             this.resize(event.currentTarget.innerWidth, event.currentTarget.innerHeight);
         });
+
+        window.addEventListener('keyup', (event) => {
+            if(event.key === '+'){
+                // Toggle debug mode
+                this.isDebug = !this.isDebug;
+            }
+        });
+
         this.resize(this.canvas.width, this.canvas.height);
     };
 
@@ -179,7 +190,10 @@ class Game {
         if(this.eventUpdate && !this.gameOver){
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.backGround.draw();
-            this.drawGrid();
+            
+            if(this.isDebug){
+                this.drawGrid();
+            }
             
 
             //Render & update player's state
