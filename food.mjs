@@ -6,6 +6,7 @@ class Food {
         this.x;
         this.y;
         this.reset();
+        this.image = document.querySelector('#berry');
     };
 
     // Spawn if collisioned with snake
@@ -15,8 +16,9 @@ class Food {
     };
 
     draw(){
-        this.game.context.fillStyle = 'orange';
-        this.game.context.fillRect(this.x * this.game.cellSize, this.y * this.game.cellSize, this.game.cellSize, this.game.cellSize);
+        //this.game.context.fillStyle = 'orange';
+        //this.game.context.fillRect(this.x * this.game.cellSize, this.y * this.game.cellSize, this.game.cellSize, this.game.cellSize);
+        this.game.context.drawImage(this.image, this.x * this.game.cellSize, this.y * this.game.cellSize, this.game.cellSize, this.game.cellSize);
     }
 
     update(){
