@@ -23,6 +23,12 @@ class UI {
         this.fullScreen.addEventListener('click', () => {
             this.game.toggleFullscreen();
         });
+
+        // Debug mode toggle
+        this.debugButton = document.querySelector('#debugButton');
+        this.debugButton.addEventListener('click', () => {
+            this.game.isDebug = !this.game.isDebug;
+        })
     }
 
     update(){
