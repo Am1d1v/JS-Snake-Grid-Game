@@ -36,17 +36,22 @@ class Snake {
 
         // Corgi-Snake image
         this.corgiSnake = document.querySelector('#corgiSnake');
+
+        // Sprite size
+        this.spriteWidth = 200;
+        this.spriteHeight = 200;
+
     }
 
     // Draw player
     draw(){
         this.segments.forEach((segment, i) => {
-            if(i === 0) this.game.context.fillStyle = 'purple'
-            else {this.game.context.fillStyle = this.color;}
-                
-            this.game.context.fillRect(segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height);
+            // if(i === 0) this.game.context.fillStyle = 'purple'
+            // else {this.game.context.fillStyle = this.color;}
+            // this.game.context.fillRect(segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height);
             
-            this.game.context.drawImage(this.corgiSnake, segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height)
+            // Set image
+            this.game.context.drawImage(this.corgiSnake, segment.frameX * this.spriteWidth, segment.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height)
             
         });
         
@@ -59,7 +64,9 @@ class Snake {
             this.y += this.speedY;
             this.segments.unshift({
                 x: this.x,
-                y: this.y
+                y: this.y,
+                frameX: 0,
+                frameY: 0
             });
 
             if(this.segments.length > this.length){
@@ -123,6 +130,12 @@ class Snake {
             this.speedY = 0;
             this.moving = true;
         }
+    }
+
+    setSpriteFrame(index){
+        const segment = this.segments[index];
+        const prevSegment = this.segments[index - 1];
+        const nextSegment = this.segments[index + 1];
     }
 };
 

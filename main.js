@@ -75,7 +75,7 @@ class Game {
         this.gameUI = new UI(this);
 
         // Scores to win
-        this.winningScore = 2;
+        this.winningScore = 20;
 
         // debug mode
         this.isDebug = true;
@@ -92,6 +92,7 @@ class Game {
         });
 
         this.resize(this.canvas.width, this.canvas.height);
+        this.start();
     };
 
     // Render game grid
