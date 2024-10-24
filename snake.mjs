@@ -33,6 +33,9 @@ class Snake {
 
         // Player's nickname
         this.name = name;
+
+        // Corgi-Snake image
+        this.corgiSnake = document.querySelector('#corgiSnake');
     }
 
     // Draw player
@@ -43,6 +46,7 @@ class Snake {
                 
             this.game.context.fillRect(segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height);
             
+            this.game.context.drawImage(this.corgiSnake, segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height)
             
         });
         
