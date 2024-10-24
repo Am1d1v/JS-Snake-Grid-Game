@@ -26,10 +26,22 @@ class Snake {
         this.score = 0;
 
         // Player's length
-        this.length = 2;
+        this.length = 3;
 
         // Player's body segments
         this.segments = [];
+
+        for (let i = 0; i < this.length; i++) {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            this.segments.unshift({
+                x: this.x,
+                y: this.y,
+                frameX: 0,
+                frameY: 0
+            });
+        }
 
         // Player's nickname
         this.name = name;
@@ -159,8 +171,22 @@ class Snake {
 
 
         } else if (index === this.segments.length - 1){ // tail
-            segment.frameX = 1;
-            segment.frameY = 4;
+            // Set tail sprite direction
+            if(prevSegment.y < segment.y){ // Up
+                segment.frameX = 1;
+                segment.frameY = 4;
+            } else if (prevSegment.y > segment.y){ // Down
+                segment.frameX = 0;
+                segment.frameY = 2;
+            } else if (prevSegment.x < segment.x){ // Left
+                segment.frameX = 2;
+                segment.frameY = 0;
+            } else if (prevSegment.x > segment.x){ // Right
+                segment.frameX = 0;
+                segment.frameY = 1;
+            }
+                
+
         } else { // body
             segment.frameX = 1;
             segment.frameY = 3;
