@@ -50,6 +50,8 @@ class Snake {
             // else {this.game.context.fillStyle = this.color;}
             // this.game.context.fillRect(segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height);
             
+            this.setSpriteFrame(i);
+
             // Set image
             this.game.context.drawImage(this.corgiSnake, segment.frameX * this.spriteWidth, segment.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height)
             
@@ -132,10 +134,37 @@ class Snake {
         }
     }
 
+    // Set right frame for the snake
     setSpriteFrame(index){
         const segment = this.segments[index];
-        const prevSegment = this.segments[index - 1];
-        const nextSegment = this.segments[index + 1];
+        const prevSegment = this.segments[index - 1] || 0;
+        const nextSegment = this.segments[index + 1] || 0;
+
+        if(index === 0){ //head
+            
+            // Set head sprite direction
+            if(segment.y < nextSegment.y){ // Up direction
+                segment.frameX = 1;
+                segment.frameY = 2;
+            } else if (segment.y > nextSegment.y){ // Down direction
+                segment.frameX = 0;
+                segment.frameY = 4;
+            } else if (segment.x < nextSegment.x){ // Left direction
+                segment.frameX = 0;
+                segment.frameY = 0;
+            } else if (segment.x > nextSegment.x) { // Right
+                segment.frameX = 2;
+                segment.frameY = 1;
+            }
+
+
+        } else if (index === this.segments.length - 1){ // tail
+            segment.frameX = 1;
+            segment.frameY = 4;
+        } else { // body
+            segment.frameX = 1;
+            segment.frameY = 3;
+        }
     }
 };
 
