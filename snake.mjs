@@ -186,8 +186,8 @@ class Snake {
                 segment.frameY = 1;
             }
                 
-
         } else { // body
+            
             segment.frameX = 1;
             segment.frameY = 3;
         }
