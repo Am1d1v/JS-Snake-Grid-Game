@@ -186,10 +186,22 @@ class Snake {
                 segment.frameY = 1;
             }
                 
-        } else { // body
+        } else { 
+            // Set body sprite direction
+            if(prevSegment.y < segment.y){ // Up
+                segment.frameX = 1;
+                segment.frameY = 3;
+            } else if (prevSegment.y > segment.y){ //Down
+                segment.frameX = 0;
+                segment.frameY = 3;
+            } else if (prevSegment.x < segment.x){ // Left
+                segment.frameX = 1;
+                segment.frameY = 0;
+            } else if (prevSegment.x > segment.x){ // Right
+                segment.frameX = 1;
+                segment.frameY = 1;
+            }
             
-            segment.frameX = 1;
-            segment.frameY = 3;
         }
     }
 };
