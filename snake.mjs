@@ -188,7 +188,7 @@ class Snake {
                 
         } else { 
             // Set body sprite direction
-            if(prevSegment.y < segment.y){ // Up
+            /* if(prevSegment.y < segment.y){ // Up
                 segment.frameX = 1;
                 segment.frameY = 3;
             } else if (prevSegment.y > segment.y){ //Down
@@ -199,6 +199,35 @@ class Snake {
                 segment.frameY = 0;
             } else if (prevSegment.x > segment.x){ // Right
                 segment.frameX = 1;
+                segment.frameY = 1;
+            } */
+
+            // Set body sprite direction
+            if(nextSegment.x < segment.x && prevSegment.x > segment.x){ // Horizontal right
+                segment.frameX = 5;
+                segment.frameY = 3;
+            } else if (prevSegment.x < segment.x && nextSegment.x > segment.x){ // Horizontal left
+                segment.frameX = 5;
+                segment.frameY = 2;
+            } else if (prevSegment.y < segment.y && nextSegment.y > segment.y){ // Vertical up
+                segment.frameX = 1;
+                segment.frameY = 3;
+            } else if (nextSegment.y < segment.y && prevSegment.y > segment.y){ // Vertical down
+                segment.frameX = 0;
+                segment.frameY = 3;
+
+                // Set body rotation
+            } else if (prevSegment.x < segment.x && nextSegment.y > segment.y){ // Bend turn up left
+                segment.frameX = 4;
+                segment.frameY = 0;
+            } else if (prevSegment.x < segment.y && nextSegment.x > segment.x){ // Bend turn down left
+                segment.frameX = 3;
+                segment.frameY = 0;
+            } else if (prevSegment.x > segment.x && nextSegment.y < segment.y){ // Bend turn down right
+                segment.frameX = 3;
+                segment.frameY = 1;
+            } else if (prevSegment.y < segment.y && nextSegment.x < segment.x){ // Bend turn up right
+                segment.frameX = 4;
                 segment.frameY = 1;
             }
             
