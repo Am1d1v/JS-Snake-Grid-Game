@@ -70,6 +70,9 @@ class UI {
         this.gameMenu.style.display = 'block';
         this.startGame.innerText = 'Start';
         this.gameOverScreen.style.display = 'block';
+
+        // Play restart sound
+        this.game.sound.play(this.game.sound.restart);
     }
 }
 

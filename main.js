@@ -133,6 +133,9 @@ class Game {
 
             this.gameOver = false;
 
+            // Play start sound
+            this.sound.play(this.sound.start);
+
              // Snake(Player's model)
             this.player1 = new Keyboard1(this, 0, this.topMargin, 0, 0, 'magenta', 'P1');
             this.player2 = new ComputerAI(this, 0, this.rows - 1, 0, 0, 'black', 'Player2');

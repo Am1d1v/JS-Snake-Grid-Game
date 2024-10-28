@@ -107,7 +107,7 @@ class Snake {
             if(this.game.food.frameY === 1 || this.game.food.frameY === 2){
 
                 // Play bite sound
-                this.game.sound.bite1.play();
+                this.game.sound.play(this.game.sound.bad_food);
 
                 this.score--;
                 this.game.food.reset();
@@ -115,6 +115,9 @@ class Snake {
                     this.length--;
                 }
             } else { // Edible food
+                // Play bite sound
+                this.game.sound.play(this.game.sound.bite1);
+
                 this.score++;
                 this.game.food.reset();
                 this.length++;
@@ -125,6 +128,7 @@ class Snake {
 
         // Win condition
         if(this.score >= this.game.winningScore){
+            this.game.sound.play(this.game.sound.win)
             this.game.gameUI.triggerGameOver(this.name);
         }
 
