@@ -29,13 +29,19 @@ class UI {
         this.debugButton.addEventListener('click', () => {
             this.game.isDebug = !this.game.isDebug;
         })
+
+        // Get player name
+        this.player1name = document.querySelector('#player1Name');
+        this.player2name = document.querySelector('#player2Name');
+        this.player3name = document.querySelector('#player3Name');
+        this.player4name = document.querySelector('#player4Name');
     }
 
     update(){
-        this.scoreBoard1.innerText = this.game.player1.name + ': ' + this.game.player1.score;
-        this.scoreBoard2.innerText = this.game.player2.name + ': ' + this.game.player2.score;
-        this.scoreBoard3.innerText = this.game.player3.name + ': ' + this.game.player3.score;
-        this.scoreBoard4.innerText = this.game.player4.name + ': ' + this.game.player4.score;
+        this.scoreBoard1.innerText = `${this.player1name.value || 'Player 1'}` + ': ' + this.game.player1.score;
+        this.scoreBoard2.innerText = `${this.player2name.value || 'Player 2'}` + ': ' + this.game.player1.score;
+        this.scoreBoard3.innerText = `${this.player3name.value || 'Player 3'}` + ': ' + this.game.player1.score;
+        this.scoreBoard4.innerText = `${this.player4name.value || 'Player 4'}` + ': ' + this.game.player1.score;
     }
 
     triggerGameOver(){

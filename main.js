@@ -92,7 +92,7 @@ class Game {
         });
 
         this.resize(this.canvas.width, this.canvas.height);
-        this.start();
+        //this.start();
     };
 
     // Render game grid

@@ -46,9 +46,9 @@ body {
   padding: 5px;
   display: flex;
   justify-content: space-between;
-}
-#controls #scoreScreen > div {
-  border: 2px solid #fff;
+  -moz-column-gap: 25px;
+       column-gap: 25px;
+  width: 300px;
 }
 
 #playerChoice {
@@ -65,6 +65,7 @@ body {
 
 #gameMenu {
   display: block;
+  padding: 10px;
 }
 
 #gameOverScreen {
@@ -74,4 +75,13 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+#message1 {
+  font-size: 30px;
+  text-align: center;
+}
+#message2 {
+  font-size: 20px;
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
