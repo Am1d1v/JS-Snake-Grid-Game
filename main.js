@@ -2,6 +2,9 @@ import Food from "./food.mjs";
 import {ComputerAI, Keyboard1, Keyboard2 } from "./snake.mjs";
 import UI from './UI.mjs';
 import Background from "./Background.mjs";
+import AudioControl from "./sounds.js";
+
+
 
 window.addEventListener('load', () => {
 
@@ -79,6 +82,9 @@ class Game {
 
         // debug mode
         this.isDebug = true;
+
+        // Sound control
+        this.sound = new AudioControl();
 
         window.addEventListener('resize', (event) => {
             this.resize(event.currentTarget.innerWidth, event.currentTarget.innerHeight);

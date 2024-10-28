@@ -105,6 +105,10 @@ class Snake {
 
             // Non-edible food
             if(this.game.food.frameY === 1 || this.game.food.frameY === 2){
+
+                // Play bite sound
+                this.game.sound.bite1.play();
+
                 this.score--;
                 this.game.food.reset();
                 if(this.length > 2){
