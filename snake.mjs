@@ -102,9 +102,21 @@ class Snake {
 
         // Check collision
         if(this.game.checkCollision(this, this.game.food)){
-            this.score++;
-            this.game.food.reset();
-            this.length++;
+
+            // Non-edible food
+            if(this.game.food.frameY === 1 || this.game.food.frameY === 2){
+                this.score--;
+                this.game.food.reset();
+                if(this.length > 2){
+                    this.length--;
+                }
+            } else { // Edible food
+                this.score++;
+                this.game.food.reset();
+                this.length++;
+            }
+
+            
         }
 
         // Win condition
