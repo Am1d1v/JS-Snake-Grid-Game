@@ -47,7 +47,8 @@ class Snake {
         this.name = name;
 
         // Corgi-Snake image
-        this.corgiSnake = document.querySelector('#corgiSnake');
+        this.randomSkinIndex = Math.floor(Math.random() * document.querySelectorAll('#corgi').length)
+        this.corgiSkin = document.querySelectorAll('#corgi')[this.randomSkinIndex];
 
         // Sprite size
         this.spriteWidth = 200;
@@ -65,7 +66,7 @@ class Snake {
             this.setSpriteFrame(i);
 
             // Set image
-            this.game.context.drawImage(this.corgiSnake, segment.frameX * this.spriteWidth, segment.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height)
+            this.game.context.drawImage(this.corgiSkin, segment.frameX * this.spriteWidth, segment.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, segment.x * this.game.cellSize, segment.y * this.game.cellSize, this.width, this.height)
             
         });
         
@@ -110,6 +111,7 @@ class Snake {
         if(this.score >= this.game.winningScore){
             this.game.gameUI.triggerGameOver(this.name);
         }
+
     }
 
     // Snake Movement Manipulation
