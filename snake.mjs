@@ -108,7 +108,7 @@ class Snake {
 
         // Win condition
         if(this.score >= this.game.winningScore){
-            this.game.gameUI.triggerGameOver();
+            this.game.gameUI.triggerGameOver(this);
         }
     }
 

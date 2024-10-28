@@ -75,7 +75,7 @@ class Game {
         this.gameUI = new UI(this);
 
         // Scores to win
-        this.winningScore = 20;
+        this.winningScore = 1;
 
         // debug mode
         this.isDebug = true;
