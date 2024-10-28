@@ -53,7 +53,7 @@ class UI {
         this.gameOverUI();
 
         // Set message text
-        this.message1.innerText = "Winner: " + winner.name;
+        this.message1.innerText = winner ? `${"Winner: " +  winner}` : 'No winner';
         this.message2.innerText = 'Press start to try again';
         
     }
